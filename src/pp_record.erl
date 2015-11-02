@@ -1,12 +1,12 @@
 %%% -*- coding: utf-8 -*-
 %%% @doc
 %%%
-%%% Pretty prints Erlang records using record definitions.
+%%% Pretty prints records using record definitions with help of epp.
 %%% Almost all of the code is taken from shell.erl where
 %%% shell commands `rp` and `rr` are defined.
 %%%
 %%% @end
--module(pp_rec).
+-module(pp_record).
 
 %% ------------------------------------------------------------------
 %% API Function Exports

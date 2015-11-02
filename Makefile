@@ -1,3 +1,3 @@
-PROJECT = pp_records
+PROJECT = pp_record
 
 include erlang.mk
