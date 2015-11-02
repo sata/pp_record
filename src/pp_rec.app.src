@@ -1,0 +1,7 @@
+{application, pp_rec, [
+	{description, "pretty print records"},
+	{vsn, "0.1.0"},
+	{modules, []},
+	{registered, []},
+	{applications, []}
+]}.
