@@ -33,9 +33,14 @@ read(FileOrModule) ->
 %% FileOrModule argument can be either an module, path to module or
 %% wildcard. In case of module name, it will ask the code server for
 %% the full path to the module. see find_file/1 for details.
--spec read(atom() | string(), [tuple()]) -> [tuple()].
+-spec read(atom() | string(), [tuple()]) -> {ok, [tuple()]} | {error, term()}.
 read(FileOrModule, Opts) ->
-  stripped_read_records(FileOrModule, Opts).
+  case stripped_read_records(FileOrModule, Opts) of
+    {error, _R} = Err ->
+      Err;
+    Res ->
+      {ok, Res}
+  end.
 
 %% prints Value and formats entries according to record definitions
 %% found in RecDefs.
@@ -43,7 +48,7 @@ read(FileOrModule, Opts) ->
 %% The only difference here from shell.erl is instead of looking up
 %% record definitions in shell ETS table it's done by doing keyfinds
 %% on list.
--spec print(term(), atom() | string()) -> string().
+-spec print(term(), atom() | string()) -> io_lib:chars().
 print(Value, RecDefs) when is_tuple(Value) andalso
                            is_list(RecDefs) ->
   io_lib_pretty:print(Value, ([{column, 1},
