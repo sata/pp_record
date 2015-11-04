@@ -49,8 +49,8 @@ read(FileOrModule, Opts) ->
 %% record definitions in shell ETS table it's done by doing keyfinds
 %% on list.
 -spec print(term(), atom() | string()) -> io_lib:chars().
-print(Value, RecDefs) when is_tuple(Value) andalso
-                           is_list(RecDefs) ->
+print(Value, RecDefs) when is_tuple(Value) orelse is_list(Value)
+                           andalso is_list(RecDefs) ->
   io_lib_pretty:print(Value, ([{column, 1},
                                {line_length, columns()},
                                {depth, -1},
