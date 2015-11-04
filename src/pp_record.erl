@@ -62,12 +62,17 @@ print(Value, RecDefs) when is_tuple(Value) orelse is_list(Value)
 %% Internal Functions
 %% -------------------------------------------------------------------
 stripped_read_records(R, Opts) ->
-  [{Name,D} || {attribute,_,_,{Name,_}} = D <- read_records(R, Opts)].
+  case read_records(R, Opts) of
+    {error, _R} = Err ->
+      Err;
+    Res ->
+      [{Name,D} || {attribute,_,_,{Name,_}} = D <- Res]
+  end.
 
 record_print_fun(Data) ->
     fun(Tag, NoFields) ->
             case lists:keyfind(Tag, 1, Data) of
-                [{_,{attribute,_,record,{Tag,Fields}}}]
+              {_,{attribute,_,record,{Tag,Fields}}}
                                   when length(Fields) =:= NoFields ->
                     record_fields(Fields);
                 _ ->
