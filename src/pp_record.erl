@@ -19,7 +19,7 @@
 %% API Function Definitions
 %% ------------------------------------------------------------------
 
--spec read(atom() | string()) -> [tuple()].
+-spec read(atom() | string()) -> {ok, [tuple()]} | {error, term()}.
 read(FileOrModule) ->
   read(FileOrModule, []).
 
