@@ -1,7 +1,12 @@
-{application, pp_record, [
-	{description, "pretty print record"},
-	{vsn, "0.1.1"},
-	{modules, []},
-	{registered, []},
-	{applications, []}
-]}.
+{application, pp_record,
+ [
+  {description, "pretty print record"},
+  {vsn, "0.1.2"},
+  {modules, []},
+  {registered, []},
+  {applications, []},
+  {maintainers, ["Sam Tavakoli"]},
+  {licenses, ["Erlang Public License"]},
+  {links, [{"Github", "https://github.com/sata/pp_record"}]}
+ ]}.
+

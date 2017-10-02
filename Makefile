@@ -1,3 +1,8 @@
-PROJECT = pp_record
+.PHONY: compile all
 
-include erlang.mk
+R = ./rebar3
+
+compile:
+	$(R) compile
+
+all:: compile
