@@ -84,6 +84,8 @@ record_fields([{record_field,_,{atom,_,Field}} | Fs]) ->
     [Field | record_fields(Fs)];
 record_fields([{record_field,_,{atom,_,Field},_} | Fs]) ->
     [Field | record_fields(Fs)];
+record_fields([{typed_record_field,Field,_Type} | Fs]) ->
+    record_fields([Field | Fs]);
 record_fields([]) ->
     [].
 
